@@ -1,77 +1,61 @@
-
 const CHOICES = ["ROCK", "PAPER", "SCISSORS"];
-const totalRounds = parseInt(prompt("How many rounds would you like to play?"));
+const totalRounds = document.querySelector("#rounds");
+const cpuResults = document.querySelector("#cpu");
+const playerResults = document.querySelector("#player");
+const playerBtns = document.querySelectorAll("button");
 
-game(totalRounds);
+let numRounds = 0;
+let cpuScore = 0;
+let playerScore = 0;
 
-function game(rounds) {
-    let playerScore = 0;
-    let roundsPlayed = 1;
-    for (let i = 0; i < rounds; i++) {
-        console.log(`Round: ${roundsPlayed}  Score: ${playerScore}`);
+playerBtns.forEach((button) => {
+  button.addEventListener("click", () => {
+    playRound(button.value);
+  });
+});
 
-        let playerSelection = getPlayerChoice(CHOICES);
-        console.log(`Player: ${playerSelection}`);
+initializeScore();
 
-        let computerSelection = CHOICES[getComputerChoice(CHOICES)];
-        console.log(`Computer: ${computerSelection}`);
-
-        playerScore += playRound(playerSelection, computerSelection);
-        roundsPlayed++;
-    }
-
-    alert(`You won ${playerScore} out of ${rounds} rounds.`);
+function initializeScore() {
+  totalRounds.textContent = `Total Rounds: ${numRounds}`;
+  cpuResults.textContent = `Computer Wins: ${cpuScore}`;
+  playerResults.textContent = `Player Wins: ${playerScore}`;
 }
-
-function getPlayerChoice(choices) {
-    let validChoice = false;
-    while(!validChoice) {
-        let userInput = prompt("Make your choice. Type ROCK, PAPER, or SCISSORS").toUpperCase();
-        if (choices.includes(userInput)) {
-            return userInput;
-        } else {
-            alert("Please enter a valid selection.");
-        }
-    }
-} 
 
 function getComputerChoice(choices) {
-    return Math.floor(Math.random() * choices.length);
+  return Math.floor(Math.random() * choices.length);
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
+  let computerSelection = CHOICES[getComputerChoice(CHOICES)];
+  if (playerSelection === computerSelection) {
+    console.log("Tie round!");
+    return 0;
+  }
 
-    if (playerSelection === computerSelection) {
-        alert("Tie round!");
-        return 0;
-    }
+  let playerWon = false;
+  switch (playerSelection) {
+    case "ROCK":
+      if (computerSelection === "SCISSORS") {
+        playerWon = true;
+      }
+      break;
+    case "PAPER":
+      if (computerSelection === "ROCK") {
+        playerWon = true;
+      }
+      break;
+    case "SCISSORS":
+      if (computerSelection === "PAPER") {
+        playerWon = true;
+      }
+  }
 
-    let playerWon = false;
-    switch(playerSelection) {
-        case "ROCK":
-            if (computerSelection === "SCISSORS") 
-            {
-                playerWon = true;
-            }
-            break;
-        case "PAPER":
-            if (computerSelection === "ROCK")
-            {
-                playerWon = true;
-            }
-            break;
-        case "SCISSORS":
-            if (computerSelection === "PAPER")
-            {
-                playerWon = true;
-            }
-    }
-
-    if (playerWon) {
-        alert(`You win! ${playerSelection} beats ${computerSelection}.`);
-        return 1;
-    } else {
-        alert(`You Lose! ${computerSelection} beats ${playerSelection}.`);
-        return 0;
-    }
+  if (playerWon) {
+    console.log(`You win! ${playerSelection} beats ${computerSelection}.`);
+    return 1;
+  } else {
+    console.log(`You Lose! ${computerSelection} beats ${playerSelection}.`);
+    return 0;
+  }
 }
