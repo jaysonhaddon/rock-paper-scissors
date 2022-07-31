@@ -41,6 +41,7 @@ main {
   flex-direction: column;
   width: 100vw;
   text-align: center;
+  padding-bottom: 15px;
 }
 
 .wrapper header {
@@ -62,6 +63,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 15px;
 }
 
@@ -71,4 +73,18 @@ main {
 
 .restart {
   max-width: 100px;
+}
+
+@media screen and (max-width: 600px) {
+  main {
+    flex-direction: column-reverse;
+  }
+
+  .sidebar {
+    height: 225px;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
 }

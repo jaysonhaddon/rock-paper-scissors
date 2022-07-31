@@ -113,7 +113,7 @@ function endGameCheck(rounds) {
     ending = document.createElement("p");
     restart = document.createElement("button");
 
-    restart.textContent = "Restart Game";
+    restart.textContent = "Play Again?";
     restart.classList.add("restart");
 
     ending.textContent = `Game Over: You won ${scoreboard.playerScore} out of ${rounds} rounds!`;
