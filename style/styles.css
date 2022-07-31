@@ -1,5 +1,4 @@
 * {
-  margin: 0;
   box-sizing: border-box;
 }
 
@@ -12,5 +11,17 @@ body {
 }
 
 header {
+  text-align: center;
+}
+
+.scoreboard,
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.result {
   text-align: center;
 }

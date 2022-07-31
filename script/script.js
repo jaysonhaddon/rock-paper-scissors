@@ -1,7 +1,9 @@
 const CHOICES = ["ROCK", "PAPER", "SCISSORS"];
+const main = document.querySelector("main");
 const totalRounds = document.querySelector("#rounds");
 const cpuResults = document.querySelector("#cpu");
 const playerResults = document.querySelector("#player");
+const roundResults = document.querySelector(".result");
 const playerBtns = document.querySelectorAll("button");
 
 let numRounds = 0;
@@ -17,9 +19,45 @@ playerBtns.forEach((button) => {
 initializeScore();
 
 function initializeScore() {
-  totalRounds.textContent = `Total Rounds: ${numRounds}`;
-  cpuResults.textContent = `Computer Wins: ${cpuScore}`;
-  playerResults.textContent = `Player Wins: ${playerScore}`;
+  totalRounds.textContent = numRounds;
+  cpuResults.textContent = cpuScore;
+  playerResults.textContent = playerScore;
+}
+
+function updateScoreboard(resultUI, winner) {
+  let scoreToUpdate;
+  if (winner === "Player") {
+    playerScore++;
+    scoreToUpdate = playerScore;
+  } else {
+    cpuScore++;
+    scoreToUpdate = cpuScore;
+  }
+  resultUI.textContent = scoreToUpdate;
+}
+
+function endGameCheck(rounds) {
+  if (rounds >= 5) {
+    let ending = document.createElement("p");
+    let restart = document.createElement("button");
+
+    restart.textContent = "Restart Game";
+    restart.classList.add("buttons");
+
+    ending.textContent = `Game Over: You won ${playerScore} out of ${rounds} rounds!`;
+    ending.classList.add("result");
+
+    playerBtns.forEach((button) => {
+      button.disabled = true;
+    });
+
+    restart.addEventListener("click", () => {
+      location.reload();
+    });
+
+    main.appendChild(ending);
+    main.appendChild(restart);
+  }
 }
 
 function getComputerChoice(choices) {
@@ -27,10 +65,13 @@ function getComputerChoice(choices) {
 }
 
 function playRound(playerSelection) {
+  numRounds++;
+  totalRounds.textContent = numRounds;
   let computerSelection = CHOICES[getComputerChoice(CHOICES)];
   if (playerSelection === computerSelection) {
-    console.log("Tie round!");
-    return 0;
+    roundResults.textContent = "Tie round!";
+    endGameCheck(numRounds);
+    return;
   }
 
   let playerWon = false;
@@ -52,10 +93,12 @@ function playRound(playerSelection) {
   }
 
   if (playerWon) {
-    console.log(`You win! ${playerSelection} beats ${computerSelection}.`);
-    return 1;
+    roundResults.textContent = `You win! ${playerSelection} beats ${computerSelection}.`;
+    updateScoreboard(playerResults, "Player");
   } else {
-    console.log(`You Lose! ${computerSelection} beats ${playerSelection}.`);
-    return 0;
+    roundResults.textContent = `You Lose! ${computerSelection} beats ${playerSelection}.`;
+    updateScoreboard(cpuResults, "Computer");
   }
+
+  endGameCheck(numRounds);
 }
