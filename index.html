@@ -8,21 +8,33 @@
     <title>Rock Paper Scissors</title>
   </head>
   <body>
-    <header>
-      <h1>Rock Paper Scissors</h1>
-    </header>
     <main>
-      <div class="buttons">
-        <button value="ROCK">ROCK</button>
-        <button value="PAPER">PAPER</button>
-        <button value="SCISSORS">SCISSORS</button>
+      <section class="sidebar">
+        <h3>SCOREBOARD</h3>
+        <div class="scoreboard">
+          <p>Current Round: <span id="rounds"></span></p>
+          <p>Player wins: <span id="player"></span></p>
+          <p>Computer wins: <span id="cpu"></span></p>
+        </div>
+        <div class="game-results">
+          <p>Total Games: <span id="total"></span></p>
+          <button id="new-game">New Game</button>
+        </div>
+      </section>
+      <div class="wrapper">
+        <header>
+          <h1>ROCK PAPER SCISSORS</h1>
+        </header>
+        <div class="container">
+          <p>Choose your weapon!</p>
+          <div class="buttons">
+            <button class="main-btn" value="ROCK">ROCK</button>
+            <button class="main-btn" value="PAPER">PAPER</button>
+            <button class="main-btn" value="SCISSORS">SCISSORS</button>
+          </div>
+          <p class="result"></p>
+        </div>
       </div>
-      <div class="scoreboard">
-        <p>Total Rounds: <span id="rounds"></span></p>
-        <p>Computer Wins: <span id="cpu"></span></p>
-        <p>Player Wins: <span id="player"></span></p>
-      </div>
-      <p class="result"></p>
     </main>
     <script src="./script/script.js" type="text/javascript"></script>
   </body>
