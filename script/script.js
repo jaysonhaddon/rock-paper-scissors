@@ -8,16 +8,16 @@ const roundResults = document.querySelector(".result");
 const playerBtns = document.querySelectorAll(".main-btn");
 const sidebar = document.querySelector(".sidebar-container");
 
-let newGameBtn;
-let endingResult;
-let maxRounds = 5;
-
 const scoreboard = {
   gamesPlayed: 0,
   numRounds: 0,
   playerScore: 0,
   cpuScore: 0,
 };
+
+let newGameBtn;
+let endingResult;
+let maxRounds = 5;
 
 playerBtns.forEach((button) => {
   button.addEventListener("click", () => {
@@ -28,15 +28,12 @@ playerBtns.forEach((button) => {
 newGame();
 
 function playRound(playerSelection) {
-  scoreboard.numRounds++;
-  if (scoreboard.numRounds < maxRounds + 1) {
-    totalRounds.textContent = scoreboard.numRounds;
-  }
+  updateRounds();
 
   let computerSelection = CHOICES[getComputerChoice(CHOICES)];
   if (playerSelection === computerSelection) {
     roundResults.textContent = "Tie round! No points.";
-    endGameCheck(scoreboard.numRounds);
+    gameoverCheck(scoreboard.numRounds);
     return;
   }
 
@@ -66,10 +63,18 @@ function playRound(playerSelection) {
     updateScoreboard(cpuResults, "Computer");
   }
 
-  endGameCheck(scoreboard.numRounds);
+  gameoverCheck(scoreboard.numRounds);
 }
 
 function newGame() {
+  resetScoreboard();
+
+  playerBtns.forEach((button) => {
+    button.disabled = false;
+  });
+}
+
+function resetScoreboard() {
   for (let property in scoreboard) {
     if (property === "gamesPlayed") {
       continue;
@@ -85,10 +90,6 @@ function newGame() {
   cpuResults.textContent = scoreboard.cpuScore;
   totalGames.textContent = scoreboard.gamesPlayed;
   roundResults.textContent = "";
-
-  playerBtns.forEach((button) => {
-    button.disabled = false;
-  });
 
   if (scoreboard.gamesPlayed !== 0) {
     endingResult.remove();
@@ -108,28 +109,39 @@ function updateScoreboard(resultUI, winner) {
   resultUI.textContent = scoreToUpdate;
 }
 
-function endGameCheck(rounds) {
-  if (rounds > maxRounds) {
-    scoreboard.gamesPlayed++;
-    totalGames.textContent = scoreboard.gamesPlayed;
-
-    endingResult = document.createElement("p");
-    newGameBtn = document.createElement("button");
-
-    newGameBtn.textContent = "Play Again?";
-
-    endingResult.textContent = `Game Over: You won ${scoreboard.playerScore} out of ${rounds} rounds!`;
-    endingResult.classList.add("result");
-
-    playerBtns.forEach((button) => {
-      button.disabled = true;
-    });
-
-    newGameBtn.addEventListener("click", newGame);
-
-    resultCon.appendChild(endingResult);
-    sidebar.appendChild(newGameBtn);
+function updateRounds() {
+  scoreboard.numRounds++;
+  if (scoreboard.numRounds < maxRounds + 1) {
+    totalRounds.textContent = scoreboard.numRounds;
   }
+}
+
+function gameoverCheck(rounds) {
+  if (rounds > maxRounds) {
+    gameover();
+  }
+}
+
+function gameover() {
+  scoreboard.gamesPlayed++;
+  totalGames.textContent = scoreboard.gamesPlayed;
+
+  endingResult = document.createElement("p");
+  newGameBtn = document.createElement("button");
+
+  newGameBtn.textContent = "Play Again?";
+
+  endingResult.textContent = `Game Over: You won ${scoreboard.playerScore} out of ${maxRounds} rounds!`;
+  endingResult.classList.add("result");
+
+  playerBtns.forEach((button) => {
+    button.disabled = true;
+  });
+
+  newGameBtn.addEventListener("click", newGame);
+
+  resultCon.appendChild(endingResult);
+  sidebar.appendChild(newGameBtn);
 }
 
 function getComputerChoice(choices) {

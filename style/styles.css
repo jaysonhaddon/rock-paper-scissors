@@ -142,8 +142,8 @@ footer {
   text-align: center;
   font-size: 24px;
   color: #e7f6f2;
-  height: 100px;
-  padding: 40px;
+  height: 75px;
+  padding: 25px;
 }
 
 a {
@@ -166,7 +166,7 @@ i {
 
   .sidebar {
     width: 400px;
-    height: 250px;
+    height: 260px;
   }
 
   .sidebar-container {
@@ -175,5 +175,10 @@ i {
 
   .game-card-wrapper {
     gap: 25px;
+  }
+
+  footer {
+    padding: 15px;
+    height: 50px;
   }
 }
