@@ -6,7 +6,7 @@ const cpuResults = document.querySelector("#cpu");
 const playerResults = document.querySelector("#player");
 const roundResults = document.querySelector(".result");
 const playerBtns = document.querySelectorAll(".main-btn");
-const gameResults = document.querySelector(".game-results");
+const sidebar = document.querySelector(".sidebar-container");
 
 let newGameBtn;
 let endingResult;
@@ -122,7 +122,7 @@ function endGameCheck(rounds) {
     newGameBtn.addEventListener("click", newGame);
 
     resultCon.appendChild(endingResult);
-    gameResults.appendChild(newGameBtn);
+    sidebar.appendChild(newGameBtn);
   }
 }
 
