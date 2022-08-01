@@ -6,80 +6,94 @@
   font-family: "Roboto", sans-serif;
 }
 
+body {
+  background-color: #e7f6f2;
+  font-size: 32px;
+}
+
+header {
+  background-color: #395b64;
+  border: 2px solid black;
+  color: whitesmoke;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
 main {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  width: 100vw;
+  gap: 50px;
+  margin: 100px 0;
 }
 
 .sidebar {
+  align-self: center;
   background-color: #a5c9ca;
   border: 2px solid black;
-  border-left: none;
-  height: 100vh;
-  width: 150px;
-  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px, -5px -5px 10px;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 50px;
+  padding: 10px;
   text-align: left;
+  width: 300px;
+  height: 600px;
 }
 
 .sidebar h3 {
   border-bottom: 2px solid black;
+  text-align: center;
 }
 
 .scoreboard,
 .game-results {
   display: flex;
   flex-direction: column;
-  font-size: 14px;
+  padding: 0 25px;
+  font-size: 26px;
   gap: 10px;
 }
 
 .game-results button {
+  margin-top: 100px;
   align-self: center;
-  max-width: 100px;
+  font-size: 24px;
+  width: 150px;
 }
 
-.wrapper {
-  background-color: #e7f6f2;
+.game-card-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
   text-align: center;
   padding-bottom: 15px;
-  gap: 15px;
-}
-
-.wrapper header {
-  align-self: stretch;
-  background-color: #395b64;
-  border: 2px solid black;
-  border-left: none;
-  color: whitesmoke;
-  padding: 10px;
-  margin-bottom: 10px;
+  gap: 50px;
 }
 
 .btn-container,
 .result-container {
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 10px;
-  box-shadow: 1px 1px 5px, -1px -1px 5px;
+  box-shadow: 5px 5px 10px, -5px -5px 10px;
   display: flex;
   flex-direction: column;
+  width: 500px;
+  height: 300px;
+  padding: 15px;
+}
+
+.btn-container {
   align-items: center;
   justify-content: center;
-  width: 300px;
-  height: 150px;
-  padding: 15px;
   gap: 15px;
 }
 
 .result-container {
-  width: 300px;
-  height: 90px;
+  gap: 30px;
 }
 
 .buttons {
@@ -90,32 +104,39 @@ main {
   gap: 15px;
 }
 
-.result {
-  text-align: center;
-}
-
-.restart {
-  max-width: 100px;
-}
-
 button {
   border: 1px solid black;
   border-radius: 5px;
 }
 
 button:hover {
-  background-color: grey;
+  background-color: #395b64;
+  color: #e7f6f2;
 }
 
 .main-btn {
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
 }
 
 .main-btn:hover {
-  background-color: #a5c9ca;
-  width: 60px;
-  height: 60px;
+  background-color: #395b64;
+  width: 115px;
+  height: 115px;
+}
+
+footer {
+  background-color: #395b64;
+  text-align: center;
+  font-size: 24px;
+  color: #e7f6f2;
+  height: 100px;
+  padding: 40px;
+}
+
+a {
+  color: #e7f6f2;
+  text-decoration: none;
 }
 
 @media screen and (max-width: 600px) {
@@ -124,8 +145,7 @@ button:hover {
   }
 
   .sidebar {
-    height: 225px;
-    width: 100vw;
+    width: 400px;
     align-items: center;
     justify-content: center;
     text-align: center;

@@ -15,8 +15,11 @@
     <title>Rock Paper Scissors</title>
   </head>
   <body>
+    <header>
+      <h1>ROCK PAPER SCISSORS</h1>
+    </header>
     <main>
-      <section class="sidebar">
+      <div class="sidebar">
         <h3>SCOREBOARD</h3>
         <div class="scoreboard">
           <p>Current Round: <span id="rounds"></span></p>
@@ -25,24 +28,20 @@
         </div>
         <div class="game-results">
           <p>Total Games: <span id="total"></span></p>
-          <button id="new-game">New Game</button>
         </div>
-      </section>
-      <div class="wrapper">
-        <header>
-          <h1>ROCK PAPER SCISSORS</h1>
-        </header>
+      </div>
+      <div class="game-card-wrapper">
         <div class="btn-container">
           <p><em>Choose your weapon!</em></p>
           <div class="buttons">
             <button class="main-btn" value="ROCK">
-              <i class="fa-solid fa-hand-fist fa-2x"></i>
+              <i class="fa-solid fa-hand-fist fa-5x"></i>
             </button>
             <button class="main-btn" value="PAPER">
-              <i class="fa-solid fa-hand fa-2x"></i>
+              <i class="fa-solid fa-hand fa-5x"></i>
             </button>
             <button class="main-btn" value="SCISSORS">
-              <i class="fa-solid fa-hand-scissors fa-2x"></i>
+              <i class="fa-solid fa-hand-scissors fa-5x"></i>
             </button>
           </div>
         </div>
@@ -52,6 +51,14 @@
         </div>
       </div>
     </main>
+    <footer>
+      <p>
+        Created by Jayson Haddon
+        <a href="https://github.com/jaysonhaddon"
+          ><i class="fa-brands fa-github fa-lg"></i
+        ></a>
+      </p>
+    </footer>
     <script src="./script/script.js" type="text/javascript"></script>
   </body>
 </html>

@@ -1,14 +1,15 @@
 const CHOICES = ["ROCK", "PAPER", "SCISSORS"];
-const wrapper = document.querySelector(".wrapper");
+const resultCon = document.querySelector(".result-container");
 const totalRounds = document.querySelector("#rounds");
 const totalGames = document.querySelector("#total");
 const cpuResults = document.querySelector("#cpu");
 const playerResults = document.querySelector("#player");
 const roundResults = document.querySelector(".result");
 const playerBtns = document.querySelectorAll(".main-btn");
-const newGameBtn = document.querySelector("#new-game");
+const gameResults = document.querySelector(".game-results");
 
-let ending;
+let newGameBtn;
+let endingResult;
 let restart;
 
 const scoreboard = {
@@ -23,8 +24,6 @@ playerBtns.forEach((button) => {
     playRound(button.value);
   });
 });
-
-newGameBtn.addEventListener("click", newGame);
 
 newGame();
 
@@ -87,8 +86,8 @@ function newGame() {
   });
 
   if (scoreboard.gamesPlayed !== 0) {
-    ending.remove();
-    restart.remove();
+    endingResult.remove();
+    newGameBtn.remove();
   }
 }
 
@@ -109,23 +108,22 @@ function endGameCheck(rounds) {
     scoreboard.gamesPlayed++;
     totalGames.textContent = scoreboard.gamesPlayed;
 
-    ending = document.createElement("p");
-    restart = document.createElement("button");
+    endingResult = document.createElement("p");
+    newGameBtn = document.createElement("button");
 
-    restart.textContent = "Play Again?";
-    restart.classList.add("restart");
+    newGameBtn.textContent = "Play Again?";
 
-    ending.textContent = `Game Over: You won ${scoreboard.playerScore} out of ${rounds} rounds!`;
-    ending.classList.add("result");
+    endingResult.textContent = `Game Over: You won ${scoreboard.playerScore} out of ${rounds} rounds!`;
+    endingResult.classList.add("result");
 
     playerBtns.forEach((button) => {
       button.disabled = true;
     });
 
-    restart.addEventListener("click", newGame);
+    newGameBtn.addEventListener("click", newGame);
 
-    wrapper.appendChild(ending);
-    wrapper.appendChild(restart);
+    resultCon.appendChild(endingResult);
+    gameResults.appendChild(newGameBtn);
   }
 }
 
