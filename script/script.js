@@ -1,5 +1,5 @@
 const CHOICES = ["ROCK", "PAPER", "SCISSORS"];
-const container = document.querySelector(".container");
+const wrapper = document.querySelector(".wrapper");
 const totalRounds = document.querySelector("#rounds");
 const totalGames = document.querySelector("#total");
 const cpuResults = document.querySelector("#cpu");
@@ -10,7 +10,6 @@ const newGameBtn = document.querySelector("#new-game");
 
 let ending;
 let restart;
-let isFirstGame = true;
 
 const scoreboard = {
   gamesPlayed: 0,
@@ -34,7 +33,7 @@ function playRound(playerSelection) {
   totalRounds.textContent = scoreboard.numRounds;
   let computerSelection = CHOICES[getComputerChoice(CHOICES)];
   if (playerSelection === computerSelection) {
-    roundResults.textContent = "Tie round!";
+    roundResults.textContent = "Tie round! No points.";
     endGameCheck(scoreboard.numRounds);
     return;
   }
@@ -125,8 +124,8 @@ function endGameCheck(rounds) {
 
     restart.addEventListener("click", newGame);
 
-    container.appendChild(ending);
-    container.appendChild(restart);
+    wrapper.appendChild(ending);
+    wrapper.appendChild(restart);
   }
 }
 

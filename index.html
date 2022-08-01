@@ -5,6 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./style/styles.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Rock Paper Scissors</title>
   </head>
   <body>
@@ -13,8 +20,8 @@
         <h3>SCOREBOARD</h3>
         <div class="scoreboard">
           <p>Current Round: <span id="rounds"></span></p>
-          <p>Player wins: <span id="player"></span></p>
-          <p>Computer wins: <span id="cpu"></span></p>
+          <p>Player: <span id="player"></span></p>
+          <p>Computer: <span id="cpu"></span></p>
         </div>
         <div class="game-results">
           <p>Total Games: <span id="total"></span></p>
@@ -25,13 +32,22 @@
         <header>
           <h1>ROCK PAPER SCISSORS</h1>
         </header>
-        <div class="container">
-          <p>Choose your weapon!</p>
+        <div class="btn-container">
+          <p><em>Choose your weapon!</em></p>
           <div class="buttons">
-            <button class="main-btn" value="ROCK">ROCK</button>
-            <button class="main-btn" value="PAPER">PAPER</button>
-            <button class="main-btn" value="SCISSORS">SCISSORS</button>
+            <button class="main-btn" value="ROCK">
+              <i class="fa-solid fa-hand-fist fa-2x"></i>
+            </button>
+            <button class="main-btn" value="PAPER">
+              <i class="fa-solid fa-hand fa-2x"></i>
+            </button>
+            <button class="main-btn" value="SCISSORS">
+              <i class="fa-solid fa-hand-scissors fa-2x"></i>
+            </button>
           </div>
+        </div>
+        <div class="result-container">
+          <h3>Results:</h3>
           <p class="result"></p>
         </div>
       </div>
