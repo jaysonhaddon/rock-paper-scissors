@@ -10,7 +10,6 @@ const gameResults = document.querySelector(".game-results");
 
 let newGameBtn;
 let endingResult;
-let restart;
 
 const scoreboard = {
   gamesPlayed: 0,
