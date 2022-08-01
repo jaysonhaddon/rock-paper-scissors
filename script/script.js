@@ -10,6 +10,7 @@ const sidebar = document.querySelector(".sidebar-container");
 
 let newGameBtn;
 let endingResult;
+let maxRounds = 5;
 
 const scoreboard = {
   gamesPlayed: 0,
@@ -28,7 +29,10 @@ newGame();
 
 function playRound(playerSelection) {
   scoreboard.numRounds++;
-  totalRounds.textContent = scoreboard.numRounds;
+  if (scoreboard.numRounds < maxRounds + 1) {
+    totalRounds.textContent = scoreboard.numRounds;
+  }
+
   let computerSelection = CHOICES[getComputerChoice(CHOICES)];
   if (playerSelection === computerSelection) {
     roundResults.textContent = "Tie round! No points.";
@@ -69,6 +73,8 @@ function newGame() {
   for (let property in scoreboard) {
     if (property === "gamesPlayed") {
       continue;
+    } else if (property === "numRounds") {
+      scoreboard[property] = 1;
     } else {
       scoreboard[property] = 0;
     }
@@ -103,7 +109,7 @@ function updateScoreboard(resultUI, winner) {
 }
 
 function endGameCheck(rounds) {
-  if (rounds >= 5) {
+  if (rounds > maxRounds) {
     scoreboard.gamesPlayed++;
     totalGames.textContent = scoreboard.gamesPlayed;
 

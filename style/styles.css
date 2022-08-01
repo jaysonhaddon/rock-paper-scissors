@@ -70,6 +70,7 @@ main {
 }
 
 .sidebar-container button {
+  color: black;
   align-self: center;
   margin-top: 25px;
   font-size: 24px;
@@ -81,7 +82,6 @@ main {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding-bottom: 15px;
   gap: 50px;
 }
 
@@ -171,5 +171,9 @@ i {
 
   .sidebar-container {
     flex-direction: row;
+  }
+
+  .game-card-wrapper {
+    gap: 25px;
   }
 }
