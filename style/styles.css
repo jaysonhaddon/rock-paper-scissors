@@ -145,6 +145,11 @@ a {
     flex-direction: column-reverse;
   }
 
+  .btn-container,
+  .result-container {
+    width: 400px;
+  }
+
   .sidebar {
     width: 400px;
     align-items: center;
