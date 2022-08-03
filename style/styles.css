@@ -137,6 +137,10 @@ button:hover {
   height: 115px;
 }
 
+.rock {
+  transform: rotate(90deg);
+}
+
 footer {
   background-color: #395b64;
   text-align: center;

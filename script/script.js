@@ -7,6 +7,9 @@ const playerResults = document.querySelector("#player");
 const roundResults = document.querySelector(".result");
 const playerBtns = document.querySelectorAll(".main-btn");
 const sidebar = document.querySelector(".sidebar-container");
+let newGameBtn;
+let endingResult;
+let maxRounds = 5;
 
 const scoreboard = {
   gamesPlayed: 0,
@@ -14,10 +17,6 @@ const scoreboard = {
   playerScore: 0,
   cpuScore: 0,
 };
-
-let newGameBtn;
-let endingResult;
-let maxRounds = 5;
 
 playerBtns.forEach((button) => {
   button.addEventListener("click", () => {
@@ -39,18 +38,18 @@ function playRound(playerSelection) {
 
   let playerWon = false;
   switch (playerSelection) {
-    case "ROCK":
-      if (computerSelection === "SCISSORS") {
+    case CHOICES[0]:
+      if (computerSelection === CHOICES[2]) {
         playerWon = true;
       }
       break;
-    case "PAPER":
-      if (computerSelection === "ROCK") {
+    case CHOICES[1]:
+      if (computerSelection === CHOICES[0]) {
         playerWon = true;
       }
       break;
-    case "SCISSORS":
-      if (computerSelection === "PAPER") {
+    case CHOICES[2]:
+      if (computerSelection === CHOICES[1]) {
         playerWon = true;
       }
   }
